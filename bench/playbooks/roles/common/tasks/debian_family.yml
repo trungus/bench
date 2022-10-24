@@ -32,6 +32,7 @@
       - libldap2-dev
       - libcups2-dev
       - pv                      # Show progress during database restore
+      - python3-venv
     state: present
     force: yes
 
