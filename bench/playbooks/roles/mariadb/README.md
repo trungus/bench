@@ -9,6 +9,7 @@ CentOS 6 & 7
 Ubuntu 14.04
 Ubuntu 16.04
 Debain 9
+Debian 11
 ```
 
 ## Post install
