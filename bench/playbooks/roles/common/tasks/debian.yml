@@ -2,6 +2,11 @@
 
 - name: Setup OpenSSL dependancy
   pip: name=pyOpenSSL version=16.2.0
+  when: ansible_distribution_version is version_compare('10', 'lt')
+
+- name: Setup OpenSSL dependancy
+  pip: name=pyOpenSSL
+  when: ansible_distribution_version is version_compare('10', 'ge')
 
 - name: install pillow prerequisites for Debian < 8
   apt:
