@@ -11,6 +11,15 @@
 # UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
 # FLUSH PRIVILEGES;
 
+
+- name: Enable login for root@localhost
+  command: 'mysql --execute "{{ item }}"'
+  with_items:
+    - SET PASSWORD FOR 'root'@localhost = PASSWORD('{{ mysql_root_password }}');
+  become: yes
+  become_user: root
+  when: ansible_os_family == 'Debian' and ansible_distribution_major_version|int >= 11
+
 - name: Set root Password
   mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }} password={{ mysql_root_password }} state=present
   with_items:
