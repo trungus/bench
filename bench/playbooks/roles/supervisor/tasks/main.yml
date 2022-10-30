@@ -6,3 +6,8 @@
 - name: Install supervisor on debian
   apt: pkg=supervisor state=present force=yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Hack to repair supervisor
+  become: yes
+  become_user: root
+  command: pip install supervisor==4.2.2
